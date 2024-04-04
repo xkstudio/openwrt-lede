@@ -339,6 +339,16 @@ define Device/tl-wr1041n-v2
 endef
 TARGET_DEVICES += tl-wr1041n-v2
 
+define Device/tl-wr702n-v1
+  $(Device/tplink-16mlzma)
+  DEVICE_TITLE := TP-LINK TL-WR702N v1
+  BOARDNAME := TL-WR702N
+  DEVICE_PROFILE := TLWR702
+  TPLINK_HWID := 0x07020101
+  CONSOLE := ttyATH0,115200
+endef
+TARGET_DEVICES += tl-wr702n-v1
+
 define Device/tl-wr703n-v1
   $(Device/tplink-4mlzma)
   DEVICE_TITLE := TP-LINK TL-WR703N v1
