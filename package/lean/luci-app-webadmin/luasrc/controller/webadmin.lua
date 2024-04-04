@@ -10,7 +10,7 @@ function index()
 
 	local page
 
-	page = entry({"admin", "system", "webadmin"}, cbi("webadmin"), _("Web Admin"), 1)
+	page = entry({"admin", "system", "webadmin"}, cbi("webadmin"), _("Web Admin"), 89)
 	page.leaf = true
 
 end
