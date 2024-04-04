@@ -719,6 +719,15 @@ define Device/tl-wr886n-v7
 endef
 TARGET_DEVICES += tl-wr886n-v7
 
+define Device/tl-wr890n-v1
+  $(Device/tplink-16mlzma)
+  DEVICE_TITLE := TP-LINK TL-WR890N v1
+  BOARDNAME := TL-WR890N-v1
+  DEVICE_PROFILE := TLWR890
+  TPLINK_HWID := 0x08900001
+endef
+TARGET_DEVICES += tl-wr890n-v1
+
 define Device/tl-wr940n-v4
   $(Device/tplink-8mlzma)
   DEVICE_TITLE := TP-LINK TL-WR940N v4

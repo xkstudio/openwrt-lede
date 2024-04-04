@@ -496,6 +496,7 @@ platform_check_image() {
 	tl-wr880n-v1|\
 	tl-wr881n-v1|\
 	tl-wr885n-v1|\
+	tl-wr890n-v1|\
 	tl-wr902ac-v1|\
 	tl-wr940n-v4|\
 	tl-wr940n-v6|\
