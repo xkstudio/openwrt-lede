@@ -51,6 +51,9 @@ $(eval $(call TestHostCommand,working-g++, \
 		g++ -x c++ -o $(TMP_DIR)/a.out - -lstdc++ && \
 		$(TMP_DIR)/a.out))
 
+$(eval $(call SetupHostCommand,ninja,Please install ninja, \
+	ninja --version | grep '1.'))
+
 ifndef IB
 $(eval $(call TestHostCommand,ncurses, \
 	Please install ncurses. (Missing libncurses.so or ncurses.h), \
