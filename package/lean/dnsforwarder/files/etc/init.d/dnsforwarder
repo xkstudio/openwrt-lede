@@ -192,10 +192,10 @@ start()
         uci commit dhcp        
         /etc/init.d/dnsmasq restart
     fi
-    	local dnsmasq_server_addr=$(uci get dhcp.@dnsmasq[0].server 2>/dev/null)
+	local dnsmasq_server_addr=$(uci get dhcp.@dnsmasq[0].server 2>/dev/null)
 	if [ -n "${dnsmasq_server_addr}" ]; then
 		uci set dhcp.@dnsmasq[0].noresolv=1
-		uci commit dhcp 
+		uci commit dhcp
 		/etc/init.d/dnsmasq restart
 	fi
 	add_cron
