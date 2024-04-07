@@ -1,3 +1,7 @@
+#
+# Copyright (C) 2024 OpenWrt.org
+#
+
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=vlmcsd
