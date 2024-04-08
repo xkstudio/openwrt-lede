@@ -1,5 +1,5 @@
-src-git packages http://git.xk.com/github/coolsnowwolf/packages.git;kwrt-21.06
-src-git luci http://git.xk.com/github/coolsnowwolf/luci.git;kwrt-21.06
+src-git packages https://github.com/xkstudio/lede-packages.git;kwrt-21.06
+src-git luci https://github.com/xkstudio/lede-luci.git;kwrt-21.06
 #src-git routing http://git.xk.com/github/openwrt/routing.git^3f85711
 #src-git routing http://git.xk.com/github/openwrt/routing.git^52a1579
 src-git routing http://git.xk.com/github/openwrt/routing.git;openwrt-19.07
