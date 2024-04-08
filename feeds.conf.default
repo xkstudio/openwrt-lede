@@ -1,5 +1,5 @@
 src-git packages https://github.com/xkstudio/lede-packages.git;kwrt-21.06
-src-git luci http://git.xk.com/github/coolsnowwolf/luci.git^5f363d9
+src-git luci https://github.com/xkstudio/lede-luci.git;kwrt-21.06
 src-git routing http://git.xk.com/github/openwrt/routing.git^ea4a3f2
 src-git telephony http://git.xk.com/github/openwrt/telephony.git^0b942da
 #src-git video https://github.com/openwrt/video.git
