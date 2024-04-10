@@ -11,11 +11,14 @@ json_get_vars protocol
 json_select ..
 json_select ..
 
-case "$protocol" in
+#case "$protocol" in
 # only enable server mode on statically addressed lan ports
-"static") [ -e /proc/sys/net/ipv6 ] && MODE=server || MODE=disabled ;;
-*) MODE=disabled ;;
-esac
+#"static") [ -e /proc/sys/net/ipv6 ] && MODE=server || MODE=disabled ;;
+#*) MODE=disabled ;;
+#esac
+
+# 2024-04-10: disable ipv6 dhcp by default
+MODE=disabled
 
 uci batch <<EOF
 set dhcp.odhcpd=odhcpd
