@@ -33,12 +33,7 @@ boot() {
 	touch /var/log/lastlog
 	# 2024-04-14: fix dns resolv error,,,  a Temporary Situation
 	mkdir -p /tmp/resolv.conf.d
-	if [ -f /tmp/resolv.conf.auto ] ; then
-		mv /tmp/resolv.conf.auto /tmp/resolv.conf.d/
-	else
-		touch /tmp/resolv.conf.d/resolv.conf.auto
-	fi
-	ln -s /tmp/resolv.conf.d/resolv.conf.auto /tmp/
+	ln -s /tmp/resolv.conf.auto /tmp/resolv.conf.d/
 	grep -q debugfs /proc/filesystems && /bin/mount -o noatime -t debugfs debugfs /sys/kernel/debug
 	[ "$FAILSAFE" = "true" ] && touch /tmp/.failsafe
 
