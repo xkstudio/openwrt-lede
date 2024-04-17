@@ -25,15 +25,15 @@ uci -q batch <<-EOF >/dev/null
 	set firewall.vpn.masq='1'
 	set firewall.vpn.network='vpn0'
 
-	delete firewall.vpntowan
-	set firewall.vpntowan=forwarding
-	set firewall.vpntowan.src='vpn'
-	set firewall.vpntowan.dest='wan'
-
 	delete firewall.vpntolan
 	set firewall.vpntolan=forwarding
 	set firewall.vpntolan.src='vpn'
 	set firewall.vpntolan.dest='lan'
+
+	delete firewall.vpntowan
+	set firewall.vpntowan=forwarding
+	set firewall.vpntowan.src='vpn'
+	set firewall.vpntowan.dest='wan'
 
 	delete firewall.lantovpn
 	set firewall.lantovpn=forwarding
