@@ -6,17 +6,18 @@
 #
 
 include $(TOPDIR)/rules.mk
+include $(INCLUDE_DIR)/nls.mk
 
 PKG_NAME:=curl
-PKG_VERSION:=7.77.0
-PKG_RELEASE:=$(AUTORELEASE)
+PKG_VERSION:=7.88.1
+PKG_RELEASE:=2
 
 PKG_SOURCE:=$(PKG_NAME)-$(PKG_VERSION).tar.xz
-PKG_SOURCE_URL:=https://dl.uxnr.de/mirror/curl/ \
-	https://curl.mirror.anstey.ca/ \
+PKG_SOURCE_URL:=https://github.com/curl/curl/releases/download/curl-$(subst .,_,$(PKG_VERSION))/ \
+	https://dl.uxnr.de/mirror/curl/ \
 	https://curl.askapache.com/download/ \
-	https://curl.haxx.se/download/
-PKG_HASH:=0f64582c54282f31c0de9f0a1a596b182776bd4df9a4c4a2a41bbeb54f62594b
+	https://curl.se/download/
+PKG_HASH:=1dae31b2a7c1fe269de99c0c31bb488346aab3459b5ffca909d6938249ae415f
 
 PKG_LICENSE:=MIT
 PKG_LICENSE_FILES:=COPYING
@@ -77,8 +78,8 @@ include $(INCLUDE_DIR)/package.mk
 define Package/curl/Default
   SECTION:=net
   CATEGORY:=Network
-  URL:=http://curl.haxx.se/
-  MAINTAINER:=Imre Kaloz <kaloz@openwrt.org>
+  URL:=http://curl.se/
+  MAINTAINER:=Stan Grishin <stangri@melmac.ca>
 endef
 
 define Package/curl
@@ -115,9 +116,7 @@ CONFIGURE_ARGS += \
 	--enable-static \
 	--disable-manual \
 	--without-nss \
-	--without-libmetalink \
 	--without-librtmp \
-	--without-libidn \
 	--without-ca-path \
 	--without-libpsl \
 	--without-zstd \
@@ -125,9 +124,10 @@ CONFIGURE_ARGS += \
 	\
 	$(call autoconf_bool,CONFIG_IPV6,ipv6) \
 	\
+	$(if $(CONFIG_LIBCURL_WOLFSSL)$(CONFIG_LIBCURL_GNUTLS)$(CONFIG_LIBCURL_OPENSSL)$(CONFIG_LIBCURL_MBEDTLS),,--without-ssl) \
 	$(if $(CONFIG_LIBCURL_WOLFSSL),--with-wolfssl="$(STAGING_DIR)/usr",--without-wolfssl) \
 	$(if $(CONFIG_LIBCURL_GNUTLS),--with-gnutls="$(STAGING_DIR)/usr",--without-gnutls) \
-	$(if $(CONFIG_LIBCURL_OPENSSL),--with-ssl="$(STAGING_DIR)/usr",--without-ssl) \
+	$(if $(CONFIG_LIBCURL_OPENSSL),--with-openssl="$(STAGING_DIR)/usr",--without-openssl) \
 	$(if $(CONFIG_LIBCURL_MBEDTLS),--with-mbedtls="$(STAGING_DIR)/usr",--without-mbedtls) \
 	\
 	$(if $(CONFIG_LIBCURL_LIBIDN2),--with-libidn2="$(STAGING_DIR)/usr",--without-libidn2) \
