@@ -9,7 +9,7 @@
 TOPDIR:=${CURDIR}
 LC_ALL:=C
 LANG:=C
-TZ:=UTC
+TZ:=CST-8
 export TOPDIR LC_ALL LANG TZ
 
 empty:=
