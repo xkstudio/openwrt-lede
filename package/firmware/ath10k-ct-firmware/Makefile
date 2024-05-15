@@ -513,7 +513,7 @@ define Package/ath10k-firmware-qca9887-ct/install
 	$(INSTALL_DIR) $(1)/lib/firmware/ath10k/QCA9887/hw1.0
 	$(INSTALL_DATA) \
 		$(DL_DIR)/$(call CT_FIRMWARE_FILE,QCA9887) \
-		$(1)/lib/firmware/ath10k/QCA9887/hw1.0/firmware-2.bin
+		$(1)/lib/firmware/ath10k/QCA9887/hw1.0/ct-firmware-2.bin
 endef
 define Package/ath10k-firmware-qca9887-ct-full-htt/install
 	$(INSTALL_DIR) $(1)/lib/firmware/ath10k/QCA9887/hw1.0

@@ -350,7 +350,7 @@ TARGET_DEVICES += tl-wdr4900-v2
 define Device/tl-wdr5800-v1
   $(Device/tplink-16mlzma)
   DEVICE_TITLE := TP-LINK TL-WDR5800 v1
-  DEVICE_PACKAGES := kmod-ath10k-ct ath10k-firmware-qca9887-ct
+  DEVICE_PACKAGES := kmod-ath10k-ct-smallbuffers ath10k-firmware-qca9887-ct
   KERNEL := kernel-bin | patch-cmdline | lzma | uImage lzma
   KERNEL_INITRAMFS := kernel-bin | patch-cmdline | lzma | uImage lzma | tplink-v1-header
   BOARDNAME := TL-WDR6500-v2
