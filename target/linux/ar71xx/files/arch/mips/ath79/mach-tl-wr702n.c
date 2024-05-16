@@ -93,26 +93,9 @@ static void __init common_setup(unsigned usb_power_gpio, bool sec_ethernet)
 	ath79_register_wmac(ee, mac);
 }
 
-static void __init tl_mr10u_setup(void)
-{
-	common_setup(TL_MR10U_GPIO_USB_POWER, false);
-}
-
-MIPS_MACHINE(ATH79_MACH_TL_MR10U, "TL-MR10U", "TP-LINK TL-MR10U",
-	     tl_mr10u_setup);
-
 static void __init tl_wr702n_setup(void)
 {
 	common_setup(TL_WR702N_GPIO_USB_POWER, false);
 }
 
-MIPS_MACHINE(ATH79_MACH_TL_WR702N, "TL-WR702N", "TP-LINK TL-WR702N v1",
-	     tl_wr702n_setup);
-
-static void __init tl_wr710n_setup(void)
-{
-	common_setup(TL_WR702N_GPIO_USB_POWER, true);
-}
-
-MIPS_MACHINE(ATH79_MACH_TL_WR710N, "TL-WR710N", "TP-LINK TL-WR710N v1",
-	     tl_wr710n_setup);
+MIPS_MACHINE(ATH79_MACH_TL_WR702N, "TL-WR702N", "TP-LINK TL-WR702N v1", tl_wr702n_setup);
