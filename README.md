@@ -5,17 +5,17 @@ Based on OpenWrt Lede
 
 ## Introduction
 
-Support the old router firmware, such as ar71xx, etc.
+Support the old router firmware, such as `ar71xx`, etc.
 
 ## Build
 
 ### System
 
-Recommend **Ubuntu 20.24** or **Ubuntu 22.04**
+Recommend `Ubuntu 20.24` or `Ubuntu 22.04`
 
-> Tips: If you use Ubuntu 22.04, pleaes use **gcc-9.5.0** and **g++-9.5.0** to compile.
+> Tips: If you use Ubuntu 22.04, pleaes use `gcc-9.5.0` and `g++-9.5.0` to compile.
 
-### Packages
+### Install Build Packages
 
 ```
 sudo apt update
