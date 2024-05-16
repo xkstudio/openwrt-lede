@@ -16,27 +16,28 @@ export ftp_proxy=socks5://${proxy_server}
 jobs=$(nproc)
 
 function _log(){
-    echo "[`date +'%F %T'`] $1"
+    msg="[`date +'%F %T'`] $1"
+    echo -e "\033[33m${msg}\033[39m"
 }
 
 function build(){
     _target=$1
-    _log "==================== Compile for ${_target} ===================="
+    _log "==================== ${_target} ===================="
     target_meta=build_config/target/${_target}.config
     target_packages=build_config/package/${_target}.config
     [ -f ${target_packages} ] || target_packages=${target_packages_default}
-    _log "Generate build config file for ${_target} ..."
+    _log "${_target} => Generate build config file ..."
     cat ${target_meta} ${target_packages} > .config
     make defconfig
     backup_config_name="${_target}_`date +'%+4Y%m%d_%H%M'`".config
-    _log "Backup .config file to configs/${backup_config_name} ..."
+    _log "${_target} => Backup .config file to configs/${backup_config_name} ..."
     cp .config configs/${backup_config_name}
-    _log "Run make world for ${_target} ..."
+    _log "${_target} => Run make world ..."
     make -j $jobs
-    [ $? -eq 0 ] && _log "Build completed for ${_target}."
+    [ $? -eq 0 ] && _log "${_target} => Build completed."
 }
 
-function run_task(){
+function run_build(){
     build_time=`date +"%F %T"`
     date +%s > version.date
     echo ${build_time} > feeds/kwrt/kwrt-settings/files/build.time
@@ -57,6 +58,6 @@ case $1 in
         make package/$2/compile V=sc -j 1
     ;;
     *)
-	run_task
+	run_build
 esac
 
