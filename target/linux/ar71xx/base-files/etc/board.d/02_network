@@ -375,6 +375,11 @@ ar71xx_setup_interfaces()
 		ucidef_add_switch "switch0" \
 			"0@eth0" "1:lan" "2:lan" "3:lan"
 		;;
+	tl-wr890n-v1)
+		ucidef_set_interfaces_lan_wan "eth1.1" "eth0"
+		ucidef_add_switch "switch0" \
+			"0@eth1" "1:lan:4" "2:lan:3" "3:lan:2" "4:lan:1"
+		;;
 	dir-825-b1|\
 	nbg460n_550n_550nh|\
 	tew-673gru|\
