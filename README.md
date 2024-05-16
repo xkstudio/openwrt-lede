@@ -9,13 +9,13 @@ Support the old router firmware, such as ar71xx, etc.
 
 ## Build
 
-* 01. System
+### System
 
-Recommend *Ubuntu 20.24* or *Ubuntu 22.04*
+Recommend **Ubuntu 20.24** or **Ubuntu 22.04**
 
-> Tips: If you use Ubuntu 22.04, pleaes use *gcc-9.5.0* and *g++-9.5.0* to compile.
+> Tips: If you use Ubuntu 22.04, pleaes use **gcc-9.5.0** and **g++-9.5.0** to compile.
 
-* 02. Packages
+### Packages
 
 ```
 sudo apt update
@@ -28,20 +28,20 @@ python3-pyelftools python3-setuptools qemu-utils rsync scons squashfs-tools subv
 upx-ucl unzip vim wget xmlto xxd zlib1g-dev
 ```
 
-* 03. Update and install feeds packages
+### Update and install feeds packages
 
 ```
 ./scripts/feeds update -a
 ./scripts/feeds install -a
 ```
 
-* 04. Select a device model
+### Select a device model
 
 ```
 make menuconfig
 ```
 
-* 05. Start complie
+### Start complie
 
 ```
 make -j 8
