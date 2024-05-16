@@ -3,15 +3,17 @@ K-Wrt 21.06
 
 Based on OpenWrt Lede
 
-### Introduction
+## Introduction
 
 Support the old router firmware, such as ar71xx, etc.
 
-### Build
+## Build
 
 * 01. System
 
-Ubuntu 20.24 or 22.04
+Recommend *Ubuntu 20.24* or *Ubuntu 22.04*
+
+> Tips: If you use Ubuntu 22.04, pleaes use *gcc-9.5.0* and *g++-9.5.0* to compile.
 
 * 02. Packages
 
@@ -33,7 +35,7 @@ upx-ucl unzip vim wget xmlto xxd zlib1g-dev
 ./scripts/feeds install -a
 ```
 
-* 04. Choose device model
+* 04. Select a device model
 
 ```
 make menuconfig
