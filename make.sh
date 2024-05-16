@@ -39,7 +39,7 @@ function run_build(){
     build_time=`date +"%F %T"`
     date +%s > version.date
     echo ${build_time} > feeds/kwrt/kwrt-settings/files/build.time
-    grep -Ev '^#' ${targets_list} | while read line
+    grep -Ev '^#' ${targets} | while read line
     do
         build "$line"
     done
