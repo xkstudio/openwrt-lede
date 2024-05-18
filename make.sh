@@ -2,9 +2,9 @@
 # Build for K-Wrt
 # Author: Xiaok
 # Date: 2024-03-18
-# Update: 2024-05-16
+# Update: 2024-05-18
 
-targets=targets.list
+targets=build_config/targets.list
 target_package_default=build_config/package/common.config
 proxy_server="192.168.188.91:1080"
 export http_proxy=socks5://${proxy_server}
@@ -18,8 +18,8 @@ function _log(){
 }
 
 function build(){
-    _target=$(echo $1 | awk -F: '{print $1}')
-    _target_name=$(echo $1 | awk -F: '{print $2}')
+    _target=$(echo $1 | awk -F ' : ' '{print $1}')
+    _target_name=$(echo $1 | awk -F ' : ' '{print $2}')
     _log "==================== ${_target_name} ===================="
     target_profile=build_config/target/${_target}.config
     target_package=build_config/package/${_target}.config
@@ -28,6 +28,7 @@ function build(){
     cat ${target_profile} ${target_package} > .config
     make defconfig
     backup_config_name="${_target}_`date +'%+4Y%m%d_%H%M'`".config
+    [ -d configs ] || mkdir configs
     _log "${_target_name} => Backup .config file to configs/${backup_config_name} ..."
     cp .config configs/${backup_config_name}
     _log "${_target_name} => Make the world ..."
@@ -39,9 +40,13 @@ function run_build(){
     build_time=`date +"%F %T"`
     date +%s > version.date
     echo ${build_time} > feeds/kwrt/kwrt-settings/files/build.time
-    grep -Ev '^#' ${targets} | while read line
+    targets_num=$(cat ${targets} | wc -l)
+    for i in `seq 1 ${targets_num}`
     do
-        build "$line"
+        _target=$(sed -n ${i}p ${targets})
+        echo $_target | grep -E '^#' > /dev/null 2>&1
+        [ $? -eq 0 ] && continue
+        build "$_target"
     done
 }
 
