@@ -1114,13 +1114,13 @@ config BUSYBOX_DEFAULT_FEATURE_VI_ASK_TERMINAL
 	default y
 config BUSYBOX_DEFAULT_FEATURE_VI_UNDO
 	bool
-	default n
+	default y
 config BUSYBOX_DEFAULT_FEATURE_VI_UNDO_QUEUE
 	bool
-	default n
+	default y
 config BUSYBOX_DEFAULT_FEATURE_VI_UNDO_QUEUE_MAX
 	int
-	default 0
+	default 32
 config BUSYBOX_DEFAULT_FEATURE_VI_VERBOSE_STATUS
 	bool
 	default n
