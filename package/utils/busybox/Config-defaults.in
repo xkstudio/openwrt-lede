@@ -1405,7 +1405,7 @@ config BUSYBOX_DEFAULT_PASSWD
 	default y
 config BUSYBOX_DEFAULT_FEATURE_PASSWD_WEAK_CHECK
 	bool
-	default y
+	default n
 config BUSYBOX_DEFAULT_SU
 	bool
 	default n
@@ -2264,7 +2264,7 @@ config BUSYBOX_DEFAULT_FEATURE_TLS_SHA1
 	default n
 config BUSYBOX_DEFAULT_ARP
 	bool
-	default n
+	default y
 config BUSYBOX_DEFAULT_ARPING
 	bool
 	default n
