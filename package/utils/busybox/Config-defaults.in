@@ -1324,7 +1324,7 @@ config BUSYBOX_DEFAULT_USE_BB_SHADOW
 	default n
 config BUSYBOX_DEFAULT_USE_BB_CRYPT
 	bool
-	default n
+	default y
 config BUSYBOX_DEFAULT_USE_BB_CRYPT_SHA
 	bool
 	default y
