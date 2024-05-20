@@ -1,0 +1,20 @@
+--- a/libbb/pw_encrypt.c
++++ b/libbb/pw_encrypt.c
+@@ -141,7 +141,7 @@ char* FAST_FUNC pw_encrypt(const char *clear, const char *salt, int cleanup)
+ 
+ 	encrypted = my_crypt(clear, salt);
+ 	if (!encrypted)
+-		bb_simple_error_msg_and_die("bad salt");
++		bb_simple_error_msg_and_die("bad salt: -1");
+ 
+ 	if (cleanup)
+ 		my_crypt_cleanup();
+@@ -161,7 +161,7 @@ char* FAST_FUNC pw_encrypt(const char *clear, const char *salt, int cleanup)
+ 	 * but since 2.17 it returns NULL.
+ 	 */
+ 	if (!encrypted || !encrypted[0])
+-		bb_simple_error_msg_and_die("bad salt");
++		bb_simple_error_msg_and_die("bad salt: -2");
+ 	return xstrdup(encrypted);
+ }
+ 
