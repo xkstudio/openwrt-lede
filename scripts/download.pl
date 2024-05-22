@@ -268,7 +268,22 @@ push @mirrors, 'https://sources.cdn.openwrt.org';
 push @mirrors, 'https://sources.openwrt.org';
 push @mirrors, 'https://mirror2.openwrt.org/sources';
 
+sub dowload_from_local {
+	my $target = $_[0];
+	my $filename = $_[1];
+	my $localurl = "/data1/openwrt/lede/dl";
+	if ( -f "$localurl/$filename" ) {
+		copy("$localurl/$filename", "$target/$filename");
+		print("Copy from $localurl/$filename\n");
+		return 1;
+	}
+	return 0;
+}
+
 while (!-f "$target/$filename") {
+	if ( dowload_from_local($target, $filename) ) {
+		last;
+	}
 	my $mirror = shift @mirrors;
 	$mirror or die "No more mirrors to try - giving up.\n";
 
