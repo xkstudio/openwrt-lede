@@ -6,7 +6,7 @@
 
 targets=build_config/targets.list
 target_package_default=build_config/package/common.config
-proxy_server="192.168.188.91:1080"
+proxy_server="vpn.xk.com:1080"
 export http_proxy=socks5://${proxy_server}
 export https_proxy=socks5://${proxy_server}
 export ftp_proxy=socks5://${proxy_server}
