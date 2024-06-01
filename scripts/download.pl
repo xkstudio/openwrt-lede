@@ -284,6 +284,9 @@ sub copy_from_local {
 	return 0;
 }
 
+# Record download log
+system("echo [`date +'%F %T'`] $filename >> $scriptdir/../dl/download.log");
+
 while (!-f "$target/$filename") {
 	if ( copy_from_local($target, $filename) ) {
 		last;
