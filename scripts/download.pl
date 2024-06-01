@@ -270,6 +270,9 @@ foreach my $mirror (@ARGV) {
 push @mirrors, 'https://sources.openwrt.org';
 push @mirrors, 'https://mirror2.openwrt.org/sources';
 
+# Record download log
+system("echo [`date +'%F %T'`] $filename >> $scriptdir/../dl/download.log");
+
 while (!-f "$target/$filename") {
 	my $mirror = shift @mirrors;
 	$mirror or die "No more mirrors to try - giving up.\n";
