@@ -279,6 +279,7 @@ sub copy_from_local {
 	if ( -f "$localpath/$filename" ) {
 		copy("$localpath/$filename", "$target/$filename");
 		print("Copy from $localpath/$filename\n");
+		system("echo [`date +'%F %T'`] Copy $filename from $localpath >> $scriptdir/../dl/download.log");
 		return 1;
 	}
 	return 0;
