@@ -23,7 +23,7 @@ msgid "Enable SFE Fast Path"
 msgstr "启用 SFE Fast Path 加速"
 
 msgid "Enable Fast Path offloading for connections. (decrease cpu load / increase routing throughput)"
-msgstr "开启 Fast Path 转发加速. (降低 CPU 占用 / 增强路由转发性能，和多 WAN 或者 QOS 功能可能会冲突)"
+msgstr "开启 Fast Path 转发加速. (降低 CPU 占用 / 增强路由转发性能，和多 WAN 或者 QoS 功能可能会冲突)"
 
 msgid "Bridge Acceleration"
 msgstr "桥接加速"
