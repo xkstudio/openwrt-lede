@@ -2267,7 +2267,7 @@ config BUSYBOX_DEFAULT_ARP
 	default y
 config BUSYBOX_DEFAULT_ARPING
 	bool
-	default n
+	default y
 config BUSYBOX_DEFAULT_BRCTL
 	bool
 	default y
