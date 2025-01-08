@@ -7,23 +7,35 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=cmake
-PKG_VERSION:=3.21.6
+PKG_VERSION:=3.18.6
 PKG_RELEASE:=1
 PKG_CPE_ID:=cpe:/a:kitware:cmake
 
 PKG_SOURCE:=$(PKG_NAME)-$(PKG_VERSION).tar.gz
 PKG_SOURCE_URL:=https://github.com/Kitware/CMake/releases/download/v$(PKG_VERSION)/ \
-		https://cmake.org/files/v3.21/
-PKG_HASH:=b7c3ac35ca7ed3cce8c192c9c873e6061aaecc8b2bc564290e629b10bff59f3c
+		https://cmake.org/files/v3.18/
+PKG_HASH:=124f571ab70332da97a173cb794dfa09a5b20ccbb80a08e56570a500f47b6600
 
 HOST_BUILD_PARALLEL:=1
 HOST_CONFIGURE_PARALLEL:=1
 
 include $(INCLUDE_DIR)/host-build.mk
 
+# Workaround for GCC versions below 6.X and ccache
+# Reference: https://github.com/openwrt/openwrt/pull/1929
+GCC_DMPVER_GREPCMD := grep -E '^(4\.[8-9]|[5]\.?)'
+GCC_DMPVER_STRING := $(shell $(HOSTCC_NOCACHE) -dumpversion | $(GCC_DMPVER_GREPCMD))
+ifneq ($(GCC_DMPVER_STRING),)
+  ifeq ($(CONFIG_CCACHE),y)
+    $(info GCC version less than 6.0 detected, disabling CCACHE)
+    HOST_CONFIGURE_VARS:=$(filter-out CC=% gcc%",$(HOST_CONFIGURE_VARS)) CC="$(HOSTCC_NOCACHE)"
+    HOST_CONFIGURE_VARS:=$(filter-out CXX=% g++%",$(HOST_CONFIGURE_VARS)) CXX="$(HOSTCXX_NOCACHE)"
+      else
+    $(info GCC version greater or equal to 6.0 detected, no workaround set for CCACHE)
+  endif
+endif
+
 HOST_CONFIGURE_VARS += \
-	CC="$(HOSTCC_NOCACHE)" \
-	CXX="$(HOSTCXX_NOCACHE)" \
 	MAKEFLAGS="$(HOST_JOBS)" \
 	CXXFLAGS="$(HOST_CFLAGS)"
 
