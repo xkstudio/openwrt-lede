@@ -12,7 +12,7 @@ endif
 
 ifneq ($(SOURCE_DATE_EPOCH),)
   ifndef DUMP
-    KBUILD_BUILD_TIMESTAMP:=$(shell perl -e 'print scalar gmtime($(SOURCE_DATE_EPOCH))')
+    KBUILD_BUILD_TIMESTAMP:=$(shell date -d @$(SOURCE_DATE_EPOCH))
   endif
 endif
 
