@@ -47,12 +47,12 @@ make menuconfig
 ### Start complie
 
 ```
-make -j 8
+make -j 6
 ```
 
-For debug:
+For debug
 
 ```
-make V=sc -j 1
+make -j 1 V=sc
 ```
 
