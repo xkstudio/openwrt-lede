@@ -120,14 +120,14 @@ detect_mac80211() {
 			${ht_capab}
 			${set_no_scan}
 			set wireless.radio${devidx}.disabled=0
-			set wireless.radio${devidx}.country=US
+			set wireless.radio${devidx}.country=CN
 			set wireless.default_radio${devidx}=wifi-iface
 			set wireless.default_radio${devidx}.device=radio${devidx}
 			set wireless.default_radio${devidx}.network=lan
 			set wireless.default_radio${devidx}.mode=ap
 			set wireless.default_radio${devidx}.ssid=$ssid
-			#set wireless.default_radio${devidx}.encryption='psk2+tkip+ccmp'
-			#set wireless.default_radio${devidx}.key='12345678'
+			## set wireless.default_radio${devidx}.encryption='psk2+tkip+ccmp'
+			## set wireless.default_radio${devidx}.key='12345678'
 EOF
 		uci -q commit wireless
 
