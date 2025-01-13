@@ -1741,7 +1741,7 @@ config BUSYBOX_DEFAULT_FEATURE_MOUNT_OTHERTAB
 	default n
 config BUSYBOX_DEFAULT_MOUNTPOINT
 	bool
-	default n
+	default y
 config BUSYBOX_DEFAULT_NOLOGIN
 	bool
 	default n
