@@ -11,9 +11,9 @@ Support the old router firmware, such as `ar71xx`, etc.
 
 ### System
 
-Recommend `Ubuntu 20.24` or `Ubuntu 22.04`
+Recommend `Ubuntu 20.24 LTS` or `Ubuntu 22.04 LTS`
 
-> Tips: If you use Ubuntu 22.04, pleaes use `gcc-9.5.0` and `g++-9.5.0` to compile.
+~~Tips: If you use Ubuntu 22.04 LTS, pleaes use `gcc-9.5.0` and `g++-9.5.0` to compile.~~
 
 ### Install Build Packages
 
@@ -29,7 +29,7 @@ python3-setuptools qemu-utils rsync scons squashfs-tools subversion swig texinfo
 upx-ucl unzip vim wget xmlto xxd zlib1g-dev
 ```
 
-> Tips:  `mkisofs` on Ubuntu 20.04, for Ubuntu 22.04 is called `genisoimage`
+> Tips:  `mkisofs` on `Ubuntu 20.04 LTS`, for `Ubuntu 22.04 LTS` is called `genisoimage`
 
 ### Update and install feeds packages
 
