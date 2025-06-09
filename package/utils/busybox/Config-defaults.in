@@ -2306,7 +2306,7 @@ config BUSYBOX_DEFAULT_FEATURE_FTPGETPUT_LONG_OPTIONS
 	default y
 config BUSYBOX_DEFAULT_HOSTNAME
 	bool
-	default n
+	default y
 config BUSYBOX_DEFAULT_DNSDOMAINNAME
 	bool
 	default n
@@ -2603,25 +2603,25 @@ config BUSYBOX_DEFAULT_FEATURE_TELNETD_INETD_WAIT
 	default n
 config BUSYBOX_DEFAULT_TFTP
 	bool
-	default n
+	default y
 config BUSYBOX_DEFAULT_FEATURE_TFTP_PROGRESS_BAR
 	bool
-	default n
+	default y
 config BUSYBOX_DEFAULT_FEATURE_TFTP_HPA_COMPAT
 	bool
-	default n
+	default y
 config BUSYBOX_DEFAULT_TFTPD
 	bool
 	default n
 config BUSYBOX_DEFAULT_FEATURE_TFTP_GET
 	bool
-	default n
+	default y
 config BUSYBOX_DEFAULT_FEATURE_TFTP_PUT
 	bool
-	default n
+	default y
 config BUSYBOX_DEFAULT_FEATURE_TFTP_BLOCKSIZE
 	bool
-	default n
+	default y
 config BUSYBOX_DEFAULT_TFTP_DEBUG
 	bool
 	default n
