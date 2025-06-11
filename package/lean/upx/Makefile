@@ -9,11 +9,17 @@ include $(TOPDIR)/rules.mk
 PKG_NAME:=upx
 PKG_VERSION:=4.2.4
 PKG_RELEASE:=1
+## PKG_BUILD_DIR:=$(BUILD_DIR)/$(PKG_NAME)-$(PKG_VERSION)-src
+HOST_BUILD_DIR:=$(BUILD_DIR_HOST)/$(PKG_NAME)-$(PKG_VERSION)-src
 
-PKG_SOURCE_PROTO:=git
-PKG_SOURCE_URL:=https://github.com/upx/upx.git
-PKG_SOURCE_VERSION:=3757579ffc6fa8710b4b7a1055529fea9dcaf149
-PKG_MIRROR_HASH:=skip
+## PKG_SOURCE_PROTO:=git
+## PKG_SOURCE_URL:=https://github.com/upx/upx.git
+## PKG_SOURCE_VERSION:=3757579ffc6fa8710b4b7a1055529fea9dcaf149
+## PKG_MIRROR_HASH:=skip
+
+PKG_SOURCE:=$(PKG_NAME)-$(PKG_VERSION)-src.tar.xz
+PKG_SOURCE_URL:=https://github.com/upx/upx/releases/download/v$(PKG_VERSION)
+PKG_HASH:=skip
 
 PKG_MAINTAINER:=Xingwang Liao <kuoruan@gmail.com>
 PKG_LICENSE:=GPL-2.0-only
