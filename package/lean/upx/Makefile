@@ -1,5 +1,5 @@
 #
-# Copyright (C) 2011-2020 OpenWrt.org
+# Copyright (C) 2011-2025 OpenWrt.org
 #
 # This is free software, licensed under the GNU General Public License v2.
 # See /LICENSE for more information.
@@ -9,22 +9,16 @@ include $(TOPDIR)/rules.mk
 PKG_NAME:=upx
 PKG_VERSION:=4.2.4
 PKG_RELEASE:=1
-## PKG_BUILD_DIR:=$(BUILD_DIR)/$(PKG_NAME)-$(PKG_VERSION)-src
-HOST_BUILD_DIR:=$(BUILD_DIR_HOST)/$(PKG_NAME)-$(PKG_VERSION)-src
-
-## PKG_SOURCE_PROTO:=git
-## PKG_SOURCE_URL:=https://github.com/upx/upx.git
-## PKG_SOURCE_VERSION:=3757579ffc6fa8710b4b7a1055529fea9dcaf149
-## PKG_MIRROR_HASH:=skip
 
 PKG_SOURCE:=$(PKG_NAME)-$(PKG_VERSION)-src.tar.xz
 PKG_SOURCE_URL:=https://github.com/upx/upx/releases/download/v$(PKG_VERSION)
-PKG_HASH:=skip
+PKG_HASH:=5ed6561607d27fb4ef346fc19f08a93696fa8fa127081e7a7114068306b8e1c4
 
 PKG_MAINTAINER:=Xingwang Liao <kuoruan@gmail.com>
 PKG_LICENSE:=GPL-2.0-only
 PKG_LICENSE_FILES:=COPYING LICENSE
 
+HOST_BUILD_DIR:=$(BUILD_DIR_HOST)/$(PKG_NAME)-$(PKG_VERSION)-src
 HOST_BUILD_DEPENDS:=ucl/host
 MAKE_PATH:=src
 
