@@ -1,0 +1,41 @@
+--- a/lib/swiotlb.c
++++ b/lib/swiotlb.c
+@@ -597,7 +597,7 @@ phys_addr_t swiotlb_tbl_map_single(struct device *hwdev,
+ 	for (i = 0; i < nslots; i++)
+ 		io_tlb_orig_addr[index+i] = orig_addr + (i << IO_TLB_SHIFT);
+ 	if (!(attrs & DMA_ATTR_SKIP_CPU_SYNC) &&
+-	    (dir == DMA_TO_DEVICE || dir == DMA_BIDIRECTIONAL))
++	    (!(attrs & DMA_ATTR_OVERWRITE) || dir == DMA_TO_DEVICE || dir == DMA_BIDIRECTIONAL))
+ 		swiotlb_bounce(orig_addr, tlb_addr, size, DMA_TO_DEVICE);
+ 
+ 	return tlb_addr;
+@@ -954,6 +954,12 @@ swiotlb_sync_single_for_device(struct device *hwdev, dma_addr_t dev_addr,
+ 			       size_t size, enum dma_data_direction dir)
+ {
+ 	swiotlb_sync_single(hwdev, dev_addr, size, dir, SYNC_FOR_DEVICE);
++ /*
++	if (dir == DMA_TO_DEVICE || dir == DMA_BIDIRECTIONAL)
++		swiotlb_sync_single(hwdev, dev_addr, size, dir, SYNC_FOR_DEVICE);
++	else
++		BUG_ON(dir != DMA_FROM_DEVICE);
++ */
+ }
+ EXPORT_SYMBOL(swiotlb_sync_single_for_device);
+ 
+--- a/include/linux/dma-mapping.h
++++ b/include/linux/dma-mapping.h
+@@ -70,6 +70,14 @@
+  */
+ #define DMA_ATTR_PRIVILEGED		(1UL << 9)
+ 
++ /*
++ * This is a hint to the DMA-mapping subsystem that the device is expected
++ * to overwrite the entire mapped size, thus the caller does not require any
++ * of the previous buffer contents to be preserved. This allows
++ * bounce-buffering implementations to optimise DMA_FROM_DEVICE transfers.
++ */
++#define DMA_ATTR_OVERWRITE		(1UL << 10)
++
+ /*
+  * A dma_addr_t can hold any valid DMA or bus address for the platform.
+  * It can be given to a device to use as a DMA source or target.  A CPU cannot
