@@ -91,7 +91,7 @@ config LIBCURL_NO_SMB
 
 config LIBCURL_SMTP
 	bool "SMTP / SMTPS protocol"
-	default n
+	default y
 
 config LIBCURL_TELNET
 	bool "TELNET protocol"
