@@ -6,5 +6,5 @@ src-git telephony http://git.xk.com/github/openwrt/telephony.git^0b942da
 #src-git targets https://github.com/openwrt/targets.git
 #src-git oldpackages http://git.openwrt.org/packages.git
 #src-link custom /usr/src/openwrt/custom-feed
-src-git helloworld http://git.xk.com/github/fw876/helloworld.git
+#src-git helloworld http://git.xk.com/github/fw876/helloworld.git
 src-git kwrt http://git.xk.com/github/xkstudio/kwrt-packages.git
