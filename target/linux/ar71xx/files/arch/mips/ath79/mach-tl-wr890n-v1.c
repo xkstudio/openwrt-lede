@@ -64,7 +64,7 @@ static struct gpio_led tl_wr890n_v1_leds_gpio[] __initdata = {
 		.active_low	= 1,
 	},
 	{
-		.name		= "tp-link:green:system",
+		.name		= "tp-link:blue:system",
 		.gpio		= TL_WR890N_V1_GPIO_LED_SYSTEM,
 		.active_low	= 1,
 	},
