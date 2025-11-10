@@ -348,6 +348,9 @@ tplink_board_detect() {
 	"640000"*)
 		model="TP-Link TL-MR6400"
 		;;
+	"58000001")
+		model="TP-Link TL-WDR5800"
+		;;
 	"65000002")
 		model="TP-Link TL-WDR6500"
 		;;
@@ -1324,6 +1327,9 @@ ar71xx_board_detect() {
 		;;
 	*"TL-WDR4900 v2")
 		name="tl-wdr4900-v2"
+		;;
+	*"TL-WDR5800 v1")
+		name="tl-wdr5800-v1"
 		;;
 	*"TL-WDR6500 v2")
 		name="tl-wdr6500-v2"

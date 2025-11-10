@@ -353,9 +353,9 @@ define Device/tl-wdr5800-v1
   DEVICE_PACKAGES := kmod-ath10k-ct-smallbuffers ath10k-firmware-qca9887-ct
   KERNEL := kernel-bin | patch-cmdline | lzma | uImage lzma
   KERNEL_INITRAMFS := kernel-bin | patch-cmdline | lzma | uImage lzma | tplink-v1-header
-  BOARDNAME := TL-WDR6500-v2
-  DEVICE_PROFILE := TLWDR6500V2
-  TPLINK_HWID := 0x65000002
+  BOARDNAME := TL-WDR5800-v1
+  DEVICE_PROFILE := TLWDR5800V1
+  TPLINK_HWID := 0x58000001
   TPLINK_HEADER_VERSION := 2
 endef
 TARGET_DEVICES += tl-wdr5800-v1

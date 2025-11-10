@@ -84,6 +84,7 @@ case "$FIRMWARE" in
 		ath10kcal_patch_mac $(macaddr_add $(cat /sys/class/net/eth0/address) +16)
 		;;
 	archer-c25-v1|\
+	tl-wdr5800-v1|\
 	tl-wdr6500-v2)
 		ath10kcal_extract "art" 0x5000 0x844
 		ath10kcal_patch_mac $(macaddr_add $(cat /sys/class/net/eth1/address) -2)
