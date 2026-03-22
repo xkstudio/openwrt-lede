@@ -1,11 +1,7 @@
 /*
  *  TP-LINK TL-WR890N TP9343 board support
  *
- *  Copyright (C) 2020 haxc
- *
- *  This program is free software; you can redistribute it and/or modify it
- *  under the terms of the GNU General Public License version 2 as published
- *  by the Free Software Foundation.
+ *  Copyright (C) 2026 Xiaok
  */
 
 #include <linux/gpio.h>
@@ -21,7 +17,6 @@
 #include "dev-m25p80.h"
 #include "dev-wmac.h"
 #include "machtypes.h"
-
 
 #define TL_WR890N_V1_GPIO_LED_WAN		2
 #define TL_WR890N_V1_GPIO_LED_LAN1		4
@@ -72,7 +67,7 @@ static struct gpio_led tl_wr890n_v1_leds_gpio[] __initdata = {
 
 static struct gpio_keys_button tl_wr890n_v1_gpio_keys[] __initdata = {
 	{
-		.desc		= "Reset button",
+		.desc		= "Reset Button",
 		.type		= EV_KEY,
 		.code		= KEY_RESTART,
 		.debounce_interval = TL_WR890N_KEYS_DEBOUNCE_INTERVAL,
@@ -90,8 +85,7 @@ static struct flash_platform_data tl_wr890n_flash_data = {
 	.part_probes	= tl_wr890n_part_probes,
 };
 
-
-static void __init tl_wr890n_setup(void)
+static void __init tl_wr890n_v1_setup(void)
 {
 	u8 *mac = (u8 *) KSEG1ADDR(0x1f01fc00);
 	u8 *ee = (u8 *) KSEG1ADDR(0x1fff1000);
@@ -110,12 +104,6 @@ static void __init tl_wr890n_setup(void)
 
 	ath79_register_wmac(ee, mac);
 
-}
-
-static void __init tl_wr890n_v1_setup(void)
-{
-	tl_wr890n_setup();
-
 	ath79_register_leds_gpio(-1, ARRAY_SIZE(tl_wr890n_v1_leds_gpio),
 				 tl_wr890n_v1_leds_gpio);
 
@@ -124,5 +112,4 @@ static void __init tl_wr890n_v1_setup(void)
 					tl_wr890n_v1_gpio_keys);
 }
 
-MIPS_MACHINE(ATH79_MACH_TL_WR890N_V1, "TL-WR890N-v1", "TP-LINK TL-WR890N v1",
-	     tl_wr890n_v1_setup);
+MIPS_MACHINE(ATH79_MACH_TL_WR890N_V1, "TL-WR890N-v1", "TP-LINK TL-WR890N v1", tl_wr890n_v1_setup);
