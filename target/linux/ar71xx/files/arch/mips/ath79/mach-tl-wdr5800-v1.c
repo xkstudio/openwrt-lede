@@ -1,5 +1,7 @@
 /*
  *  TP-LINK TL-WDR5800 v1
+ *
+ *  Copyright (C) 2026 Xiaok
  */
 
 #include <linux/pci.h>
@@ -64,13 +66,13 @@ static struct gpio_led tl_wdr5800_v1_leds_gpio[] __initdata = {
 	}, {
 		.name		= "tp-link:blue:system",
 		.gpio		= TL_WDR5800_V1_GPIO_LED_SYS,
-		.active_low	= 0,
+		.active_low	= 1,
 	},
 };
 
 static struct gpio_keys_button tl_wdr5800_v1_gpio_keys[] __initdata = {
 	{
-		.desc		= "Reset button",
+		.desc		= "Reset Button",
 		.type		= EV_KEY,
 		.code		= KEY_RESTART,
 		.debounce_interval = TL_WDR5800_V1_KEYS_DEBOUNCE_INTERVAL,
@@ -79,8 +81,7 @@ static struct gpio_keys_button tl_wdr5800_v1_gpio_keys[] __initdata = {
 	}
 };
 
-
-static void __init tl_ap151_setup(void)
+static void __init tl_wdr5800_v1_setup(void)
 {
 	u8 *mac = (u8 *) KSEG1ADDR(0x1f00fc00);
 	u8 *ee = (u8 *) KSEG1ADDR(0x1fff0000);
@@ -113,11 +114,6 @@ static void __init tl_ap151_setup(void)
 	ath79_register_wmac(ee + TL_WDR5800_V1_WMAC_CALDATA_OFFSET, tmpmac);
 
 	ath79_register_pci();
-}
-
-static void __init tl_wdr5800_v1_setup(void)
-{
-	tl_ap151_setup();
 	ath79_register_leds_gpio(-1, ARRAY_SIZE(tl_wdr5800_v1_leds_gpio), tl_wdr5800_v1_leds_gpio);
 	ath79_register_gpio_keys_polled(1, TL_WDR5800_V1_KEYS_POLL_INTERVAL, ARRAY_SIZE(tl_wdr5800_v1_gpio_keys), tl_wdr5800_v1_gpio_keys);
 }
