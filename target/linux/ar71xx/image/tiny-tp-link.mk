@@ -383,9 +383,13 @@ endef
 TARGET_DEVICES += tl-wr720n-v3
 
 define Device/tl-wr720n-v4
-  $(Device/tl-wr720n-v3)
+  $(Device/tplink-16mlzma)
   DEVICE_TITLE := TP-LINK TL-WR720N v4
+  DEVICE_PACKAGES := kmod-usb2
+  BOARDNAME := TL-WR720N-v4
+  DEVICE_PROFILE := TLWR720
   TPLINK_HWID := 0x07200104
+  CONSOLE := ttyATH0,115200
 endef
 TARGET_DEVICES += tl-wr720n-v4
 

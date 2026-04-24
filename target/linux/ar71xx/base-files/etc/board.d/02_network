@@ -177,6 +177,7 @@ ar71xx_setup_interfaces()
 	routerstation|\
 	tl-wr710n|\
 	tl-wr720n-v3|\
+	tl-wr720n-v4|\
 	tl-wr810n|\
 	tl-wr810n-v2|\
 	wpe72|\
