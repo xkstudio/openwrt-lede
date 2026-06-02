@@ -3,7 +3,7 @@
 [ -f /etc/banner ] && cat /etc/banner
 [ -n "$FAILSAFE" ] && cat /etc/banner.failsafe
 
-fgrep -sq '/ overlay ro,' /proc/mounts && {
+grep -Fsq '/ overlay ro,' /proc/mounts && {
 	echo 'Your JFFS2-partition seems full and overlayfs is mounted read-only.'
 	echo 'Please try to remove files from /overlay/upper/... and reboot!'
 }
@@ -11,7 +11,7 @@ fgrep -sq '/ overlay ro,' /proc/mounts && {
 export PATH="%PATH%"
 export HOME=$(grep -e "^${USER:-root}:" /etc/passwd | cut -d ":" -f 6)
 export HOME=${HOME:-/root}
-export PS1='\u@\h:\w\$ '
+export PS1='[\t \u@\h \W]\$ '
 export ENV=/etc/shinit
 
 case "$TERM" in
@@ -36,5 +36,6 @@ There is no root password defined on this device!
 Use the "passwd" command to set up a new password
 in order to prevent unauthorized SSH logins.
 --------------------------------------------------
+
 EOF
 fi
