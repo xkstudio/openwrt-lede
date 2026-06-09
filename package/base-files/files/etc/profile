@@ -11,7 +11,7 @@ grep -Fsq '/ overlay ro,' /proc/mounts && {
 export PATH="%PATH%"
 export HOME=$(grep -e "^${USER:-root}:" /etc/passwd | cut -d ":" -f 6)
 export HOME=${HOME:-/root}
-export PS1='[\t \u@\h \W]\$ '
+export PS1='[$(date +"%H:%M:%S") \u@\h \W]\$ '
 export ENV=/etc/shinit
 
 case "$TERM" in
